@@ -13,22 +13,22 @@ interface IProduct {
 
 const productsToPreLoad: IProduct[] = [
   {
-    name: "iPhone 11",
+    name: "iPhone 17 ",
     price: 699,
     description:
-      "Experience power and elegance with the iPhone 11: capture stunning moments with its dual-camera system, enjoy exceptional performance, and immerse yourself in a brilliant Liquid Retina display. Discover a world of possibilities in the palm of your hand!",
+      "Experience the next level of Apple intelligence with the iPhone 17 Pro: a groundbreaking camera system with advanced computational photography, the blazing-fast A19 Pro chip, and a stunning ProMotion display. Push the limits of what a smartphone can do.",
     image:
-      "https://www.apple.com/v/iphone-11/a/images/meta/og__f2j3dwkzna2u.png",
+      "https://www.apple.com/v/iphone/home/cj/images/overview/select/iphone_17pro__t1j902iw6kya_large_2x.jpg",
     categoryId: 1,
     stock: 10,
   },
   {
-    name: "MacBook Air",
+    name: "MacBook Pro 14",
     price: 999,
     description:
-      "Embrace efficiency and sophistication with the MacBook Air: lightweight design meets powerful performance, stunning Retina display brings your work to life, and all-day battery life keeps you productive wherever you go. Elevate your computing experience with the MacBook Air.",
+      "Unleash professional-grade performance with the MacBook Pro 14: powered by the latest Apple Silicon chip, featuring a stunning Liquid Retina XDR display, exceptional battery life, and a full suite of pro connectivity. Built for those who demand the most from their machine.",
     image:
-      "https://www.apple.com/v/macbook-air/a/images/meta/og__d5k62k8b4qka.png",
+      "https://www.apple.com/assets-www/en_WW/mac/04_product_tile/large/mbp_14_16_028335cc2_2x.jpg",
     categoryId: 2,
     stock: 10,
   },
@@ -38,17 +38,17 @@ const productsToPreLoad: IProduct[] = [
     description:
       "Unleash your creativity and productivity with the iPad Pro: powerful performance, stunning Liquid Retina display, and all-day battery life make the iPad Pro the perfect tool for work and play. Transform your ideas into reality with the iPad Pro.",
     image:
-      "https://www.apple.com/v/ipad-pro/a/images/meta/og__d8m6x7smkntm.png",
+      "https://www.apple.com/assets-www/en_WW/ipad/03_product_tile/large/ipad_pro_30558c612_2x.png",
     categoryId: 3,
     stock: 10,
   },
   {
-    name: "Apple Watch Series 6",
+    name: "Apple Watch SE 3",
     price: 399,
     description:
-      "Stay connected and healthy with the Apple Watch Series 6: track your workouts, monitor your health, and stay in touch with the people and information you care about most. Experience the future of health and wellness with the Apple Watch Series 6.",
+      "Get the essentials of Apple Watch at an accessible price with the Apple Watch SE 3: track your fitness and health metrics, stay connected with notifications and calls, and enjoy crash detection and safety features — all in a lightweight and stylish design.",
     image:
-      "https://www.apple.com/v/apple-watch-series-6/a/images/meta/og__c1zv8c8n7q06.png",
+      "https://www.apple.com/assets-www/en_WW/watch/product_tile/large/se_32690d524_2x.png",
     categoryId: 4,
     stock: 10,
   },
