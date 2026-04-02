@@ -1,4 +1,4 @@
-import CardList from "@/componentes/CardList"
+import CardList from "@/components/CardList"
 
 
 const HomePage = () => {
@@ -6,6 +6,7 @@ const HomePage = () => {
         <div>
             <h1>Bienvenido papa</h1>
             <CardList/>
+
         </div>
     )
 }

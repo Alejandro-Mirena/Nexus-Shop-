@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer style={{ background: "#333", color: "white", textAlign: "center", padding: "1rem" }}>
+    <footer >
       <p>© 2024 Mi Tienda</p>
     </footer>
   )

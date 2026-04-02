@@ -1,13 +1,9 @@
 const CartPage = () => {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Carrito de compras</h1>
-      <p>No hay productos en el carrito</p>
-      <div style={{ marginTop: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
-        <p>Subtotal: $0</p>
-        <button>Finalizar compra</button>
-      </div>
-    </div>
+    <div className="flex gap-8 bg-red-500 p-4">
+  <span className="text-white text-2xl font-bold">Test 1</span>
+  <span className="text-yellow-300 text-2xl font-bold">Test 2</span>
+</div>
   )
 }
 

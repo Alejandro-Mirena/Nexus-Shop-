@@ -1,8 +1,8 @@
 const DashboardPage = () => {
   return (
-    <div style={{ padding: "2rem" }}>
+    <div>
       <h1>Mi cuenta</h1>
-      <div style={{ display: "flex", gap: "2rem" }}>
+      <div >
         <div>
           <h2>Datos personales</h2>
           <p>Nombre: Usuario</p>
