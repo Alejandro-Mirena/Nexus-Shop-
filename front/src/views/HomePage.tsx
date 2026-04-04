@@ -1,12 +1,12 @@
 import CardList from "@/components/CardList"
+import Hero from "@/components/Hero"
 
 
 const HomePage = () => {
     return(
         <div>
-            <h1>Bienvenido papa</h1>
+            <Hero/>
             <CardList/>
-
         </div>
     )
 }

@@ -3,55 +3,55 @@ import Link from "next/link"
 const Navbar = () => {
   return (
     <header>
+      <nav style={{ borderBottom: "1px solid #E8E8ED" }} className="bg-white px-8 py-4 flex items-center justify-between">
 
-      {/* Barra de anuncios */}
-      <div className="bg-[#0EA5E9] text-white text-center text-xs py-2 font-medium tracking-wide">
-        Envío gratis en compras mayores a $100 — Solo por tiempo limitado
-      </div>
-
-      {/* Navbar principal */}
-      <nav className="bg-[#0F172A] px-8 py-4 flex items-center justify-between">
-
-        {/* Logo */}
-        <Link href="/" className="text-[#38BDF8] text-xl font-semibold">
+        <Link href="/" className="text-[#1D1D1F] text-lg font-semibold tracking-tight">
           Nexus Shop
         </Link>
 
-        {/* Links del centro */}
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-[#94A3B8] hover:text-white transition-colors text-sm font-medium">
+          <Link href="/" className="text-[#1D1D1F] text-sm font-medium">
             Inicio
           </Link>
-          <Link href="/products" className="text-[#94A3B8] hover:text-white transition-colors text-sm font-medium">
+          <Link href="/products" className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors text-sm">
             Productos
           </Link>
-          <Link href="/dashboard" className="text-[#94A3B8] hover:text-white transition-colors text-sm font-medium">
-            Mi cuenta
+          <Link href="/dashboard" className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors text-sm">
+            Categorías
+          </Link>
+          <Link href="/dashboard" className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors text-sm">
+            Ofertas
           </Link>
         </div>
 
-        {/* Iconos de la derecha */}
-        <div className="flex items-center gap-4">
-
-          {/* Carrito con badge */}
-          <Link href="/cart" className="relative text-[#94A3B8] hover:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c.51 0 .955-.343 1.087-.835l1.386-5.203A1.125 1.125 0 0 0 19.8 8.25H7.106M7.5 14.25 5.106 5.272M7.5 14.25l-1.5 1.5" />
+        <div className="flex items-center gap-5">
+          {/* Buscar */}
+          <button className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
             </svg>
-            <span className="absolute -top-2 -right-2 bg-[#0EA5E9] text-white text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+          </button>
+
+          {/* Carrito */}
+          <Link href="/cart" className="relative text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span className="absolute -top-2 -right-2 bg-[#0071E3] text-white text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
               3
             </span>
           </Link>
 
-          {/* Avatar usuario */}
-          <Link href="/dashboard" className="w-8 h-8 rounded-full bg-[#0EA5E9] flex items-center justify-center text-white text-xs font-semibold">
+          {/* Avatar */}
+          <Link href="/dashboard" className="w-8 h-8 rounded-full bg-[#0071E3] flex items-center justify-center text-white text-xs font-semibold">
             JD
           </Link>
-
         </div>
 
       </nav>
-
     </header>
   )
 }
