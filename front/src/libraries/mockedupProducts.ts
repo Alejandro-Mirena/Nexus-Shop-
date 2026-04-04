@@ -78,4 +78,26 @@ export const productsToPreLoad: IProduct[] = [
     categoryId: 6,
     stock: 10,
   },
+  {
+    id: 8,
+    name: "HomePod mini",
+    price: 99,
+    description:
+      "Elevate your home audio experience with the HomePod mini: immersive sound, intelligent assistant, and smart home hub make the HomePod mini the perfect addition to your home. Enjoy a world of music, news, and more with the HomePod mini.",
+    image:
+      "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-select-202210?wid=1080&hei=1080&fmt=jpeg&qlt=90&.v=Q1RBQitMYmJvQlQ1STVESXY1WlV2SlpLYkQ5SThRcnhoWTlFVGlOdXJxUE12WnA0VTdkakoxb3RuNWhBdXJCbnA2cGlnUFFScllJaDlyTVB3cDNhSWY1YVdUQzhNQjVzZ2NsNHh0QzJzMEE",
+    categoryId: 6,
+    stock: 10,
+  },
+  {
+    id: 9,
+    name: "Pantalla de estudio XDR",
+    price: 99,
+    description:
+      "Elevate your home audio experience with the HomePod mini: immersive sound, intelligent assistant, and smart home hub make the HomePod mini the perfect addition to your home. Enjoy a world of music, news, and more with the HomePod mini.",
+    image:
+      "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MFEL4?wid=532&hei=582&fmt=png-alpha&.v=eHV6SzVxYnErY1lnZnFGbm43MnRld0hqc0NvK2RZTVd5TWVhUDFuQlo0M3YzcG5UekJGa1NTUlI3aFMvTS8vbThEd1FhZ3hucDd1d3NPNU1Ydzhsdmc",
+    categoryId: 6,
+    stock: 10,
+  },
 ];
