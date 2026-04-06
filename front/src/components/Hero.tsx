@@ -17,12 +17,10 @@ const Hero = () => {
       </p>
 
       <div className="flex gap-4">
-        <Link href="/products" className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors text-white px-6 py-3 rounded-lg text-sm font-medium">
-          Ver productos
+        <Link href="/dashboard" className="bg-[#0071E3] hover:bg-[#4992db] transition-colors text-white px-6 py-3 rounded-lg text-sm font-medium">
+          Inicia Sesion
         </Link>
-        <Link href="/products" className="border border-[#1d1d1f] text-[#ffffff] hover:bg-[#1d1d1f] transition-colors px-6 py-3 rounded-lg text-sm font-medium">
-          Conocer más
-        </Link>
+        
       </div>
 
     </section>
