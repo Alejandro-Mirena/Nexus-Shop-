@@ -68,8 +68,8 @@ const perks = [
 
 const WhyUs = () => {
   return (
-    <section className="px-8 py-16 bg-[#F5F5F7]">
-      <div className="text-center mb-12">
+    <section className="px-8 py-10 bg-[#F5F5F7] border border-[#ede8e8]">
+      <div className="text-center mb-10">
         <h2 className="text-[#1D1D1F] text-2xl font-semibold tracking-tight mb-2">
           ¿Por qué elegirnos?
         </h2>

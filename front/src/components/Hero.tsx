@@ -1,9 +1,8 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const Hero = () => {
   return (
     <section className="bg-[#F5F5F7] px-8 py-20 flex flex-col items-center text-center">
-
       <span className="text-[#0071E3] text-xs font-semibold uppercase tracking-widest mb-4">
         Nuevo — iPhone 17 Pro disponible
       </span>
@@ -17,14 +16,15 @@ const Hero = () => {
       </p>
 
       <div className="flex gap-4">
-        <Link href="/dashboard" className="bg-[#0071E3] hover:bg-[#4992db] transition-colors text-white px-6 py-3 rounded-lg text-sm font-medium">
-          Inicia Sesion
+        <Link
+          href="/products"
+          className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors text-white px-6 py-3 rounded-lg text-sm font-medium"
+        >
+          Ver productos
         </Link>
-        
       </div>
-
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

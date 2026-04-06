@@ -1,5 +1,3 @@
-
-
 const category = () => {
   return (
     <div>
@@ -10,10 +8,14 @@ const category = () => {
         <p className="text-[#6E6E73] text-sm max-w-md mx-auto">
           Aquí podrás explorar los diferentes tipos de productos que ofrecemos.
         </p>
-        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-6">
+          <div>hola</div>
+          <div>hola</div>
+          <div>hola</div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default category
+export default category;
