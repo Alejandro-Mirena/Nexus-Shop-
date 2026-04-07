@@ -1,27 +1,39 @@
 "use client";
 
-import { productsToPreLoad } from "@/libraries/mockedupProducts";
-import { useState, use } from "react";
+import { useEffect, useState, use } from "react";
+import { fetchProductById } from "@/helpers/fetchProducts";
+import { IProduct } from "@/Types";
 import Link from "next/link";
 
 const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
-
-  const product = productsToPreLoad.find((p) => p.id === Number(id));
-
+  const [product, setProduct] = useState<IProduct | null>(null);
+  const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    fetchProductById(Number(id)).then((data) => {
+      setProduct(data);
+      setLoading(false);
+    });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-[#6E6E73] text-sm">
+        Cargando producto...
+      </div>
+    );
+  }
 
   if (!product) {
     return (
       <div className="text-center py-20">
         <h1 className="text-[#1D1D1F] text-2xl font-semibold mb-4">
-          Producto no encontrado 😓
+          Producto no encontrado
         </h1>
-        <Link
-          href="/products"
-          className=" text-sm hover:cursor-wait bg-[#0071E3] hover:bg-[#0077ed] transition-colors text-white px-6 py-3 rounded-lg  font-medium"
-        >
-          Volver a productos
+        <Link href="/" className="text-[#0071E3] text-sm hover:underline">
+          Volver al inicio
         </Link>
       </div>
     );
@@ -30,7 +42,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className="px-8 py-12 max-w-5xl mx-auto">
       <Link
-        href="/products"
+        href="/"
         className="text-[#0071E3] text-sm hover:underline mb-8 inline-block"
       >
         ← Volver
@@ -49,15 +61,12 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
           <h1 className="text-[#1D1D1F] text-3xl font-semibold tracking-tight mb-3">
             {product.name}
           </h1>
-
           <p className="text-[#0071E3] text-2xl font-semibold mb-4">
             ${product.price}
           </p>
-
           <p className="text-[#6E6E73] text-sm leading-relaxed mb-6">
             {product.description}
           </p>
-
           <p className="text-xs text-[#6E6E73] mb-4">
             Stock disponible:
             <span className="text-[#34C759] font-medium ml-1">
@@ -74,7 +83,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 className="px-4 py-2 text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors text-lg"
               >
-                -
+                −
               </button>
               <span className="px-4 py-2 text-[#1D1D1F] text-sm font-medium border-x border-[#E8E8ED]">
                 {quantity}
@@ -90,7 +99,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             </div>
           </div>
 
-          <button className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors text-white py-3 rounded-xl text-sm font-medium cursor-pointer ">
+          <button className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors text-white py-3 rounded-xl text-sm font-medium">
             Agregar al carrito — ${(product.price * quantity).toLocaleString()}
           </button>
         </div>
