@@ -1,13 +1,34 @@
 import { Product } from "../entities/Product";
 import { ProductRepository } from "../repositories/product.repository";
 
-export const checkProductExists = async (itemId: number): Promise<boolean> => {
-  const item: Product | null = await ProductRepository.findOneBy({
-    id: itemId,
+export const getProductsService = async (
+  categoryId?: number,
+): Promise<Product[]> => {
+  if (categoryId) {
+    return await ProductRepository.find({
+      where: {
+        category: {
+          id: categoryId,
+        },
+      },
+      relations: ["category"],
+    });
+  }
+
+  return await ProductRepository.find({
+    relations: ["category"],
   });
-  return !!item;
 };
 
-export const getProductsService = async (): Promise<Product[]> => {
-  return await ProductRepository.find();
+export const getProductByIdService = async (
+  id: number,
+): Promise<Product | null> => {
+  return await ProductRepository.findOneBy({ id });
+};
+
+export const checkProductExists = async (
+  productId: number,
+): Promise<boolean> => {
+  const product = await ProductRepository.findOneBy({ id: productId });
+  return !!product;
 };
