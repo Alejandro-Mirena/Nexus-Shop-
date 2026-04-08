@@ -14,10 +14,8 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     fetchProductById(Number(id)).then((data) => {
       setProduct(data);
-      console.log("Producto recibido en el front:", data); // Agrega este log para verificar el producto recibido
       setLoading(false);
     });
-    console.log(product);
   }, [id]);
 
   if (loading) {
@@ -44,7 +42,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className="px-8 py-12 max-w-5xl mx-auto">
       <Link
-        href="/"
+        href="/products"
         className="text-[#0071E3] text-sm hover:underline mb-8 inline-block"
       >
         ← Volver

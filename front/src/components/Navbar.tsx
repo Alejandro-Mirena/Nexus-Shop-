@@ -34,7 +34,7 @@ const Navbar = () => {
             Categorías
           </Link>
           <Link
-            href="/ofertas"
+            href="/offers"
             className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors text-sm"
           >
             Ofertas
