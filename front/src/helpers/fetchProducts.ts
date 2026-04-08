@@ -1,14 +1,13 @@
 const API_URL = "http://localhost:3001";
 
 export const fetchProducts = async (categoryId?: number) => {
-  let url = `${API_URL}/products`;
-
-  if (categoryId) {
-    url += `?categoryId=${categoryId}`;
-  }
+  const url = categoryId
+    ? `${API_URL}/products?categoryId=${categoryId}`
+    : `${API_URL}/products`;
 
   const response = await fetch(url);
-  return response.json();
+  const data = await response.json();
+  return data;
 };
 
 export const fetchProductById = async (id: number) => {
