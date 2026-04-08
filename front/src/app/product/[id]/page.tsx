@@ -14,8 +14,10 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     fetchProductById(Number(id)).then((data) => {
       setProduct(data);
+      console.log("Producto recibido en el front:", data); // Agrega este log para verificar el producto recibido
       setLoading(false);
     });
+    console.log(product);
   }, [id]);
 
   if (loading) {

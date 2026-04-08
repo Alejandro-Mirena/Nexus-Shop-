@@ -5,6 +5,8 @@ import {
   getProductsService,
 } from "../services/products.service";
 
+import { getCategoriesService } from "../services/categories.service";
+
 export const getProducts = catchedController(
   async (req: Request, res: Response) => {
     const { categoryId } = req.query;
@@ -31,4 +33,9 @@ export const getProductById = catchedController(
   },
 );
 
-//TODO: agregar el filtrado de los productos por categoria, se puede hacer con un query param o con una ruta diferente, dependiendo de como se quiera implementar en el front
+export const getAllCategories = catchedController(
+  async (req: Request, res: Response) => {
+    const categories = await getCategoriesService();
+    res.json(categories);
+  },
+);
