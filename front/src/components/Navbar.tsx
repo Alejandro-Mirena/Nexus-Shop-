@@ -78,7 +78,7 @@ const Navbar = () => {
 
           {/* Avatar */}
           <Link
-            href="/dashboard"
+            href="/auth"
             className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors text-white px-3 py-2 rounded-lg text-sm font-medium"
           >
             Iniciar Sesión
