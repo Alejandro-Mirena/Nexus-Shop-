@@ -92,7 +92,7 @@ const Navbar = () => {
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity"
               >
                 <div className="text-[#1D1D1F] text-lg font-semibold tracking-tight">
-                  <h3>Perfil</h3>
+                  Perfil
                 </div>
               </Link>
 
@@ -114,7 +114,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/auth"
-              className="bg-[#0071E3] hover:bg-[#0077ed] transition-colors text-white px-3 py-2 rounded-lg text-sm font-medium"
+              className="bg-[#0071E3] hover:bg-[#ed0000] transition-colors text-white px-3 py-2 rounded-lg text-sm font-medium"
             >
               Iniciar sesión
             </Link>

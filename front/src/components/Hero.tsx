@@ -3,7 +3,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section className="bg-[#F5F5F7] px-8 py-20 flex flex-col items-center text-center">
-      <span className="text-[#0071E3] text-xs font-semibold uppercase tracking-widest mb-4">
+      <span className="text-[#0071E3] text-xs font-semibold uppercase tracking-widest mb-4 animate-bounce">
         Nuevo — iPhone 17 Pro disponible
       </span>
 
