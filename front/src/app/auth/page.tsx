@@ -42,7 +42,7 @@ const AuthPage = () => {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const [serverError, setServerError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("Sesion Iniciada");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const loginFormik = useFormik({
     initialValues: { email: "", password: "" },
@@ -53,6 +53,7 @@ const AuthPage = () => {
       if (data.login) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        window.dispatchEvent(new Event("authChange")); // ← esta línea nueva
         router.push("/");
       } else {
         setServerError("Email o contraseña incorrectos");
