@@ -14,8 +14,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#F5F5F7] border-t border-[#ede8e8] mt-16">
-      <div className="max-w-6xl mx-auto px-8 py-10">
-        <div className="grid  md:grid-cols-4 gap-8 mb-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-10">
           {/* Navegación */}
           <div>
             <h3 className="text-[#1D1D1F] text-sm font-semibold mb-3">
@@ -46,7 +46,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categorías dinámicas desde el backend */}
+          {/* Categorías */}
           <div>
             <h3 className="text-[#1D1D1F] text-sm font-semibold mb-3">
               Categorías
@@ -109,7 +109,7 @@ const Footer = () => {
 
         {/* Línea inferior */}
         <div className="border-t border-[#E8E8ED] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#6E6E73] text-xs">
+          <p className="text-[#6E6E73] text-xs text-center md:text-left">
             © {new Date().getFullYear()} Nexus Shop. Todos los derechos
             reservados.
           </p>

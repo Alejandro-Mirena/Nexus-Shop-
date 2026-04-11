@@ -68,9 +68,9 @@ const perks = [
 
 const WhyUs = () => {
   return (
-    <section className="px-8 py-10 bg-[#F5F5F7] border border-[#ede8e8]">
+    <section className="px-4 md:px-8 py-10 bg-[#F5F5F7] border border-[#ede8e8]">
       <div className="text-center mb-10">
-        <h2 className="text-[#1D1D1F] text-2xl font-semibold tracking-tight mb-2">
+        <h2 className="text-[#1D1D1F] text-xl md:text-2xl font-semibold tracking-tight mb-2">
           ¿Por qué elegirnos?
         </h2>
         <p className="text-[#6E6E73] text-sm max-w-md mx-auto">
@@ -78,7 +78,7 @@ const WhyUs = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         {perks.map((perk, i) => (
           <div
             key={i}

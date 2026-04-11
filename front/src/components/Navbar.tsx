@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
   const router = useRouter();
   const [user, setUser] = useState<{ name: string } | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
@@ -22,7 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener("authChange", handleAuthChange);
   }, []);
 
-  // ← handleLogout tiene que estar ACÁ, fuera del useEffect
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -34,8 +34,9 @@ const Navbar = () => {
     <header>
       <nav
         style={{ borderBottom: "1px solid #E8E8ED" }}
-        className="bg-white px-8 py-4 flex items-center justify-between"
+        className="bg-white px-4 md:px-8 py-4 flex items-center justify-between"
       >
+        {/* Logo */}
         <Link
           href="/"
           className="text-[#1D1D1F] text-lg font-semibold tracking-tight"
@@ -43,7 +44,8 @@ const Navbar = () => {
           Nexus Shop
         </Link>
 
-        <div className="flex items-center gap-8 font-medium">
+        {/* Links — ocultos en móvil, visibles en desktop */}
+        <div className="hidden md:flex items-center gap-8 font-medium">
           <Link
             href="/"
             className="text-[#6E6E73] hover:text-[#1D1D1F] text-sm"
@@ -64,15 +66,16 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-5">
+        {/* Derecha */}
+        <div className="flex items-center gap-3 md:gap-5">
           {/* Carrito */}
           <Link
             href="/cart"
             className="relative text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
           >
             <svg
-              width="18"
-              height="18"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -84,19 +87,15 @@ const Navbar = () => {
             </svg>
           </Link>
 
-          {/* Login o Perfil según si hay sesión */}
+          {/* Login o Perfil */}
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               <Link
                 href="/dashboard"
-                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                className="text-[#1D1D1F] text-sm font-semibold hover:opacity-80 transition-opacity hidden md:block"
               >
-                <div className="text-[#1D1D1F] text-lg font-semibold tracking-tight">
-                  Perfil
-                </div>
+                Perfil
               </Link>
-
-              {/* Botón logout */}
               <button
                 onClick={handleLogout}
                 style={{ background: "#0071e3" }}
@@ -106,21 +105,82 @@ const Navbar = () => {
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.background = "#0071E3")
                 }
-                className="text-white px-3 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors"
+                className="text-white px-2 md:px-3 py-2 rounded-lg text-xs md:text-sm font-medium cursor-pointer transition-colors"
               >
-                Cerrar Sesion
+                Cerrar sesión
               </button>
             </div>
           ) : (
             <Link
               href="/auth"
-              className="bg-[#0071E3] hover:bg-[#ed0000] transition-colors text-white px-3 py-2 rounded-lg text-sm font-medium"
+              className="bg-[#0071E3] hover:bg-[#0077ed] transition-colors text-white px-3 py-2 rounded-lg text-xs md:text-sm font-medium"
             >
               Iniciar sesión
             </Link>
           )}
+
+          {/* Botón hamburguesa — solo móvil */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+            >
+              {menuOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <>
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </>
+              )}
+            </svg>
+          </button>
         </div>
       </nav>
+
+      {/* Menú móvil desplegable */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-[#E8E8ED] px-4 py-4 flex flex-col gap-4">
+          <Link
+            onClick={() => setMenuOpen(false)}
+            href="/"
+            className="text-[#6E6E73] text-sm font-medium"
+          >
+            Inicio
+          </Link>
+          <Link
+            onClick={() => setMenuOpen(false)}
+            href="/products"
+            className="text-[#6E6E73] text-sm font-medium"
+          >
+            Productos
+          </Link>
+          <Link
+            onClick={() => setMenuOpen(false)}
+            href="/offers"
+            className="text-[#6E6E73] text-sm font-medium"
+          >
+            Ofertas
+          </Link>
+          {user && (
+            <Link
+              onClick={() => setMenuOpen(false)}
+              href="/dashboard"
+              className="text-[#6E6E73] text-sm font-medium"
+            >
+              Perfil
+            </Link>
+          )}
+        </div>
+      )}
     </header>
   );
 };

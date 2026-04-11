@@ -151,6 +151,9 @@ const AuthPage = () => {
             className="flex flex-col gap-5"
           >
             <div>
+              <div className="text-[#1D1D1F] text-center text-lg font-semibold tracking-tight">
+                Bienvenido a Nexus Shop
+              </div>
               <label className="text-[#1D1D1F] text-sm font-medium mb-1.5 block">
                 Email
               </label>
@@ -205,6 +208,10 @@ const AuthPage = () => {
             className="flex flex-col gap-5"
           >
             <div>
+              <div className="text-[#1D1D1F] text-center py-3 text-lg font-semibold tracking-tight">
+                ¡Crea Tu Cuenta en Nexus Shop!
+              </div>
+
               <label className="text-[#1D1D1F] text-sm font-medium mb-1.5 block">
                 Nombre completo
               </label>
