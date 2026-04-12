@@ -1,9 +1,5 @@
 const ofertas = () => {
-  return (
-    <div>
-      <h1>holacabezaebola</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ofertas;

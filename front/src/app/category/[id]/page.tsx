@@ -23,7 +23,7 @@ const CategoryPage = ({ params }: { params: Promise<{ id: string }> }) => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-8">
+    <div>
       {products.map((product) => (
         <Card key={product.id} {...product} />
       ))}

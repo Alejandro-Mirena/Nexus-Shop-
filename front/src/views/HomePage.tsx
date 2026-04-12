@@ -7,7 +7,9 @@ const HomePage = () => {
     <div>
       <Hero />
       <div>
-        <h2 className="text-xl font-bold text-[#374151]">Categorías</h2>
+        <h2 className="text-xl font-bold text-center py-2 text-[#1d1d1f]">
+          Categorías
+        </h2>
         <Categories />
       </div>
       <WhyUs />
