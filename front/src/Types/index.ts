@@ -6,6 +6,8 @@ export interface IProduct {
   stock: number;
   image: string;
   categoryId: number;
+  discount?: number;
+  isOnSale?: boolean;
 }
 
 export interface ICategory {
