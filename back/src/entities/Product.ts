@@ -6,7 +6,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Order } from "./Order";
 import { Category } from "./Category";
 
 @Entity({ name: "products" })
@@ -31,6 +30,12 @@ export class Product {
 
   @Column()
   categoryId: number;
+
+  @Column({ default: 0 })
+  discount: number; // ← porcentaje de descuento, ej: 20 = 20%
+
+  @Column({ default: false })
+  isOnSale: boolean; // ← true si está en oferta
 
   @ManyToOne(() => Category, (category) => category.products)
   @JoinColumn({ name: "categoryId" })

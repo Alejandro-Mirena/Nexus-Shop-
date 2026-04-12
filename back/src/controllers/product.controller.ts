@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { catchedController } from "../utils/catchedController";
 import {
   getProductByIdService,
+  getProductsOnSaleService,
   getProductsService,
 } from "../services/products.service";
 
@@ -37,5 +38,11 @@ export const getAllCategories = catchedController(
   async (req: Request, res: Response) => {
     const categories = await getCategoriesService();
     res.json(categories);
+  },
+);
+export const getProductsOnSale = catchedController(
+  async (req: Request, res: Response) => {
+    const products = await getProductsOnSaleService();
+    res.json(products);
   },
 );

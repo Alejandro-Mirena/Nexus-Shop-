@@ -32,3 +32,8 @@ export const checkProductExists = async (
   const product = await ProductRepository.findOneBy({ id: productId });
   return !!product;
 };
+export const getProductsOnSaleService = async (): Promise<Product[]> => {
+  return await ProductRepository.find({
+    where: { isOnSale: true },
+  });
+};
