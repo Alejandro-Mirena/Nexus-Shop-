@@ -30,4 +30,5 @@ export class Order {
   @ManyToMany(() => Product)
   @JoinTable()
   products: Product[];
+  static find: any;
 }
