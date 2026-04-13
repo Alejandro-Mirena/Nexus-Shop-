@@ -14,6 +14,9 @@ import { Product } from "./Product";
 
 @Entity({ name: "orders" })
 export class Order {
+  static find(arg0: { where: { user: { id: any } } }) {
+    throw new Error("Method not implemented.");
+  }
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -30,5 +33,4 @@ export class Order {
   @ManyToMany(() => Product)
   @JoinTable()
   products: Product[];
-  static find: any;
 }

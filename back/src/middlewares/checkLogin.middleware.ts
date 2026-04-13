@@ -3,21 +3,25 @@ import { ClientError } from "../utils/errors";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config/envs";
 
-const checkLogin = async (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization;
-  if (!token) {
+const checkLogin = async (req: any, res: Response, next: NextFunction) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
     return next(new ClientError("Token is required"));
   }
 
   try {
+    const token = authHeader.split(" ")[1];
+
     const decoded = jwt.verify(token, JWT_SECRET) as { userId: number };
-    req.body.userId = decoded.userId;
+
+    req.user = {
+      id: decoded.userId,
+    };
   } catch (error) {
-    next(new ClientError("Invalid token"));
+    return next(new ClientError("Invalid token"));
   }
-  console.log("Token Check OK");
 
   next();
 };
-
 export default checkLogin;

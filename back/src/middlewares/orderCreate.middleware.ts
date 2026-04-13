@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import { ClientError } from "../utils/errors";
-import { checkUserExists } from "../services/user.service";
 import { checkProductExists } from "../services/products.service";
 
 const validateOrderFields = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { products } = req.body;
   if (!products.length)
@@ -19,7 +18,7 @@ const validateOrderFields = (
 const validateItemsExist = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { products } = req.body;
 
@@ -27,7 +26,7 @@ const validateItemsExist = async (
     const exists = await checkProductExists(itemId);
     if (!exists)
       return next(
-        new ClientError("One or more items do not exist in the database")
+        new ClientError("One or more items do not exist in the database"),
       );
   }
   next();

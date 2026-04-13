@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { createOrderService } from "../services/order.service";
 import { catchedController } from "../utils/catchedController";
 import { Order } from "../entities/Order";
+import { AppDataSource } from "../config/dataSource";
 
 export const createOrder = catchedController(
   async (req: Request, res: Response) => {
@@ -13,11 +14,17 @@ export const createOrder = catchedController(
 );
 export const getOrders = async (req: any, res: any) => {
   try {
-    const userId = req.user.id; // viene del token
+    const userId = req.user.id;
 
-    // ⚠️ aquí depende de tu DB (esto es ejemplo)
-    const orders = await Order.find({
-      where: { user: { id: userId } },
+    const orderRepository = AppDataSource.getRepository(Order);
+
+    const orders = await orderRepository.find({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+      relations: ["user", "products"],
     });
 
     res.json(orders);
