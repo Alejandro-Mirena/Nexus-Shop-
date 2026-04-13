@@ -11,7 +11,7 @@ const CartPage = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // 🔥 evita hydration error
+  if (!mounted) return null; // evita hydration error
 
   const isAuth = isAuthenticated();
 

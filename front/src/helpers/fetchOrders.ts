@@ -3,6 +3,11 @@ const API_URL = "http://localhost:3001";
 export const fetchOrders = async () => {
   const token = localStorage.getItem("token");
 
+  if (!token) {
+    console.warn("No hay token");
+    return [];
+  }
+
   const res = await fetch(`${API_URL}/orders`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -14,6 +19,5 @@ export const fetchOrders = async () => {
     return [];
   }
 
-  const data = await res.json();
-  return data;
+  return await res.json();
 };

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
   const router = useRouter();
@@ -29,6 +30,9 @@ const Navbar = () => {
     setUser(null);
     router.push("/");
   };
+  const { cart } = useCart();
+
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <header>
@@ -73,6 +77,7 @@ const Navbar = () => {
             href="/cart"
             className="relative text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
           >
+            {/* ICONO */}
             <svg
               width="24"
               height="24"
@@ -85,6 +90,13 @@ const Navbar = () => {
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
+
+            {/* 🔥 NUMERITO */}
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
+                {totalItems}
+              </span>
+            )}
           </Link>
 
           {/* Login o Perfil */}

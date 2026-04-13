@@ -5,11 +5,12 @@ import { fetchProductById } from "@/helpers/fetchProducts";
 import { IProduct } from "@/Types";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { isAuthenticated } from "@/helpers/fetchAuth";
+import { useCart } from "@/context/CartContext";
 
 const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
   const router = useRouter();
+  const { addToCart } = useCart(); // 👈 CONTEXTO
 
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(true);
@@ -22,16 +23,30 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
     });
   }, [id]);
 
-  // FUNCIÓN PROTEGIDA
+  // 🔥 FUNCIÓN CORREGIDA
   const handleAddToCart = () => {
-    if (!isAuthenticated()) {
+    const token = localStorage.getItem("token");
+
+    // ❌ NO AUTENTICADO
+    if (!token) {
       alert("Debes iniciar sesión para agregar productos al carrito");
-      router.push("/auth");
+      router.push("/login");
       return;
     }
 
-    // AQUÍ VA TU LÓGICA REAL
-    console.log("Producto agregado:", product, "Cantidad:", quantity);
+    if (!product) return;
+
+    addToCart(
+      {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      },
+      quantity,
+    );
+
+    alert("Producto agregado al carrito 🛒");
   };
 
   if (loading) {
@@ -74,7 +89,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
 
         <div className="flex flex-col justify-center">
-          <h1 className="text-[#1D1D1F] text-3xl font-semibold tracking-tight mb-3">
+          <h1 className="text-[#1D1D1F] text-3xl font-semibold mb-3">
             {product.name}
           </h1>
 
@@ -82,50 +97,44 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             ${product.price}
           </p>
 
-          <p className="text-[#6E6E73] text-sm leading-relaxed mb-6">
-            {product.description}
-          </p>
+          <p className="text-[#6E6E73] text-sm mb-6">{product.description}</p>
 
           <p className="text-xs text-[#6E6E73] mb-4">
             Stock disponible:
-            <span className="text-[#34C759] font-medium ml-1">
+            <span className="text-[#34C759] ml-1">
               {product.stock} unidades
             </span>
           </p>
 
-          {/* 🔢 Cantidad */}
+          {/* Cantidad */}
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-[#1D1D1F] text-sm font-medium">
-              Cantidad:
-            </span>
+            <span className="text-sm font-medium">Cantidad:</span>
 
-            <div className="flex items-center border border-[#E8E8ED] rounded-lg overflow-hidden">
+            <div className="flex border rounded-lg overflow-hidden">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="px-4 py-2 text-[#1D1D1F] hover:bg-[#F5F5F7] text-lg"
+                className="px-4 py-2 hover:bg-gray-100"
               >
                 -
               </button>
 
-              <span className="px-4 py-2 text-[#1D1D1F] text-sm font-medium border-x border-[#E8E8ED]">
-                {quantity}
-              </span>
+              <span className="px-4 py-2 border-x">{quantity}</span>
 
               <button
                 onClick={() =>
                   setQuantity((q) => Math.min(product.stock, q + 1))
                 }
-                className="px-4 py-2 text-[#1D1D1F] hover:bg-[#F5F5F7] text-lg"
+                className="px-4 py-2 hover:bg-gray-100"
               >
                 +
               </button>
             </div>
           </div>
 
-          {/* 🔥 BOTÓN PROTEGIDO */}
+          {/* BOTÓN */}
           <button
             onClick={handleAddToCart}
-            className="bg-[#0071E3] hover:bg-[#0077ED] transition-colors cursor-pointer text-white py-3 rounded-xl text-sm font-medium"
+            className="bg-[#0071E3] hover:bg-[#0077ED] text-white py-3 rounded-xl cursor-pointer font-medium transition-colors"
           >
             Agregar al carrito — ${(product.price * quantity).toLocaleString()}
           </button>
