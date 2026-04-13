@@ -67,15 +67,15 @@ const Navbar = () => {
         </div>
 
         {/* Derecha */}
-        <div className="flex items-center gap-3 md:gap-5">
+        <div className="flex items-center  p-2 gap-3 md:gap-5">
           {/* Carrito */}
           <Link
             href="/cart"
             className="relative text-[#1D1D1F] hover:text-[#0071E3] transition-colors"
           >
             <svg
-              width="20"
-              height="20"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -89,13 +89,30 @@ const Navbar = () => {
 
           {/* Login o Perfil */}
           {user ? (
-            <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex items-center gap-4  md:gap-3">
               <Link
                 href="/dashboard"
                 className="text-[#1D1D1F] text-sm font-semibold hover:opacity-80 transition-opacity hidden md:block"
               >
-                Perfil
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="icon icon-tabler icons-tabler-outline icon-tabler-user-circle"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                  <path d="M9 10a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                  <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
               </Link>
+
               <button
                 onClick={handleLogout}
                 style={{ background: "#0071e3" }}

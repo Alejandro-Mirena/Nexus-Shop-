@@ -236,7 +236,7 @@ const AuthPage = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 name="email"
                 value={registerFormik.values.email}
                 onChange={registerFormik.handleChange}
