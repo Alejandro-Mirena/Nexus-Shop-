@@ -60,7 +60,7 @@ const OffersPage = () => {
                     className="h-full object-contain"
                   />
                 </div>
-                {product.discount && (
+                {(product.discount ?? 0) > 0 && (
                   <span className="absolute top-3 left-3 bg-[#0071E3] text-white text-xs font-semibold px-2 py-1 rounded-lg">
                     -{product.discount}%
                   </span>
@@ -77,11 +77,16 @@ const OffersPage = () => {
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="text-[#0071E3] text-base font-semibold">
-                    ${discountedPrice.toFixed(2)}
+                    {(product.discount ?? 0) > 0
+                      ? `$${discountedPrice.toFixed(2)}`
+                      : `$${product.price}`}
                   </span>
-                  <span className="text-[#6E6E73] text-xs line-through">
-                    ${product.price}
-                  </span>
+
+                  {(product.discount ?? 0) > 0 && (
+                    <span className="text-[#6E6E73] text-xs line-through">
+                      ${product.price}
+                    </span>
+                  )}
                 </div>
               </div>
             </Link>

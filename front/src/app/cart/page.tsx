@@ -98,11 +98,11 @@ const CartPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // ← formato Bearer TOKEN
+        Authorization: `Bearer ${token}`, // formato Bearer TOKEN
       },
       body: JSON.stringify({
         userId,
-        products: cart.map((item) => item.id), // ← array de ids [1, 2, 3]
+        products: cart.map((item) => item.id), //  array de ids
       }),
     });
 

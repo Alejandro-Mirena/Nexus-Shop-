@@ -40,7 +40,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
       {
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: finalPrice,
         image: product.image,
       },
       quantity,
@@ -69,12 +69,18 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
       </div>
     );
   }
+  const hasDiscount = (product.discount ?? 0) > 0;
+
+  const discountedPrice =
+    product.price - (product.price * (product.discount ?? 0)) / 100;
+
+  const finalPrice = hasDiscount ? discountedPrice : product.price;
 
   return (
     <div className="px-8 py-12 max-w-5xl mx-auto">
       <Link
         href="/products"
-        className="text-[#0071E3] text-sm hover:underline mb-8 inline-block"
+        className="text-[#0071E3] text-lg hover:underline mb-8 inline-block"
       >
         ← Volver
       </Link>
@@ -93,10 +99,17 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             {product.name}
           </h1>
 
-          <p className="text-[#0071E3] text-2xl font-semibold mb-4">
-            ${product.price}
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-[#0071E3] text-2xl font-semibold">
+              ${finalPrice.toFixed(2)}
+            </span>
 
+            {hasDiscount && (
+              <span className="text-[#6E6E73] text-sm line-through">
+                ${product.price}
+              </span>
+            )}
+          </div>
           <p className="text-[#6E6E73] text-sm mb-6">{product.description}</p>
 
           <p className="text-xs text-[#6E6E73] mb-4">
@@ -136,7 +149,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             onClick={handleAddToCart}
             className="bg-[#0071E3] hover:bg-[#0077ED] text-white py-3 rounded-xl cursor-pointer font-medium transition-colors"
           >
-            Agregar al carrito — ${(product.price * quantity).toLocaleString()}
+            Agregar al carrito — $${(finalPrice * quantity).toLocaleString()}
           </button>
         </div>
       </div>
