@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔥 evitar hydration error
+  //  evitar hydration error
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -21,19 +21,19 @@ const Dashboard = () => {
   useEffect(() => {
     if (!mounted) return;
 
-    // 🔒 proteger ruta
+    //  proteger ruta
     if (!isAuthenticated()) {
       router.push("/auth");
       return;
     }
 
-    // 👤 obtener usuario
+    //  obtener usuario
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
 
-    // 🛒 obtener compras
+    //  obtener compras
     fetchOrders().then((data) => {
       setOrders(data);
       setLoading(false);
@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   return (
     <div className="px-8 py-10 max-w-5xl mx-auto">
-      {/* 👤 DATOS DEL USUARIO */}
+      {/*  DATOS DEL USUARIO */}
       <div className="mb-10">
         <h1 className="text-2xl font-semibold mb-4">Mi cuenta</h1>
 
@@ -67,7 +67,7 @@ const Dashboard = () => {
         )}
       </div>
 
-      {/* 🛒 COMPRAS */}
+      {/*  COMPRAS */}
       <div>
         <h2 className="text-xl font-semibold mb-4">Mis compras</h2>
 

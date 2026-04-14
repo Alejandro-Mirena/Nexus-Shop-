@@ -1,5 +1,4 @@
 "use client";
-
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface CartItem {
@@ -19,17 +18,28 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
+// Obtiene la key del carrito según el usuario logueado
+const getCartKey = () => {
+  const user = localStorage.getItem("user");
+  if (user) {
+    const parsed = JSON.parse(user);
+    return `cart_${parsed.id}`;
+  }
+  return "cart_guest";
+};
+
 export const CartProvider = ({ children }: any) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("cart");
+    const stored = localStorage.getItem(getCartKey());
     if (stored) setCart(JSON.parse(stored));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(getCartKey(), JSON.stringify(cart));
   }, [cart]);
+
   const addToCart = (product: any, quantity: number) => {
     setCart((prev) => {
       const existing = prev.find((p) => p.id === product.id);
@@ -41,9 +51,11 @@ export const CartProvider = ({ children }: any) => {
       return [...prev, { ...product, quantity }];
     });
   };
+
   const removeFromCart = (id: number) => {
     setCart((prev) => prev.filter((p) => p.id !== id));
   };
+
   const clearCart = () => setCart([]);
 
   return (
@@ -54,4 +66,5 @@ export const CartProvider = ({ children }: any) => {
     </CartContext.Provider>
   );
 };
+
 export const useCart = () => useContext(CartContext)!;
