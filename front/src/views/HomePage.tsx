@@ -8,7 +8,7 @@ const HomePage = () => {
       <Hero />
       <div>
         <h2 className="text-xl font-bold text-center py-2 text-[#1d1d1f]">
-          Categorías
+          Explora nuestras categorías
         </h2>
         <Categories />
       </div>
