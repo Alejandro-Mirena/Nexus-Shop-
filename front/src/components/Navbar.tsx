@@ -91,7 +91,7 @@ const Navbar = () => {
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
 
-            {/* 🔥 NUMERITO */}
+            {/*  NUMERITO */}
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
                 {totalItems}

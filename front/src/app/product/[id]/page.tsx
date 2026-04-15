@@ -30,7 +30,7 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
     // ❌ NO AUTENTICADO
     if (!token) {
       alert("Debes iniciar sesión para agregar productos al carrito");
-      router.push("/login");
+      router.push("/auth");
       return;
     }
 
