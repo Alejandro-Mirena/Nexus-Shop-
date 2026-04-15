@@ -104,14 +104,17 @@ const CartPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // formato Bearer TOKEN
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         userId,
-        products: cart.map((item) => item.id), //  array de ids
+        products: cart.map((item) => ({
+          id: item.id,
+          quantity: item.quantity,
+          price: item.price, // 👈 opcional pero útil
+        })),
       }),
     });
-
     if (response.ok) {
       clearCart();
       setOrderSuccess(true);
