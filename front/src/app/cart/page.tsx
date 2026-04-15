@@ -112,31 +112,36 @@ const CartPage = () => {
     }
   };
   return (
-    <div className="px-6 md:px-10 py-10 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-semibold mb-8">Carrito de compras</h1>
+    <div className="px-4 sm:px-6 md:px-10 py-8 md:py-10 max-w-5xl mx-auto">
+      <h1 className="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-center md:text-left">
+        Carrito de compras
+      </h1>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4 md:gap-6">
         {cart.map((item) => (
           <div
             key={item.id}
-            className="flex items-center gap-6 border border-[#E8E8ED] rounded-xl p-4"
+            className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 border border-[#E8E8ED] rounded-xl p-4"
           >
             <img
               src={item.image}
               alt={item.name}
-              className="w-24 h-24 object-contain bg-[#F5F5F7] rounded-lg"
+              className="w-20 h-20 sm:w-24 sm:h-24 object-contain bg-[#F5F5F7] rounded-lg"
             />
-            <div className="flex-1">
-              <h2 className="font-semibold text-[#1D1D1F]">{item.name}</h2>
-              <p className="text-sm text-[#6E6E73]">
+
+            <div className="flex-1 text-center sm:text-left">
+              <h2 className="font-semibold text-[#1D1D1F] text-sm md:text-base">
+                {item.name}
+              </h2>
+              <p className="text-xs md:text-sm text-[#6E6E73]">
                 Cantidad: {item.quantity}
               </p>
             </div>
-            <p className="font-semibold text-[#0071E3]">
+
+            <p className="font-semibold text-[#0071E3] text-sm md:text-base">
               ${(item.price * item.quantity).toFixed(2)}
             </p>
 
-            {/* Botón eliminar */}
             <button
               onClick={() => removeFromCart(item.id)}
               className="text-[#6E6E73] hover:text-red-500 transition-colors cursor-pointer p-2 rounded-lg hover:bg-red-50"
@@ -157,22 +162,27 @@ const CartPage = () => {
       </div>
 
       {/* Total */}
-      <div className="mt-10 flex justify-between items-center border-t border-[#E8E8ED] pt-6">
-        <h2 className="text-xl font-semibold text-[#1D1D1F]">Total</h2>
-        <p className="text-2xl font-bold text-[#0071E3]">${total.toFixed(2)}</p>
+      <div className="mt-8 md:mt-10 flex flex-col sm:flex-row justify-between items-center gap-3 border-t border-[#E8E8ED] pt-6">
+        <h2 className="text-lg md:text-xl font-semibold text-[#1D1D1F]">
+          Total
+        </h2>
+        <p className="text-xl md:text-2xl font-bold text-[#0071E3]">
+          ${total.toFixed(2)}
+        </p>
       </div>
 
       {/* Botones */}
       <div className="flex flex-col sm:flex-row gap-3 mt-6">
         <button
           onClick={clearCart}
-          className="flex-1 border border-[#E8E8ED] hover:border-red-400 hover:text-red-500 text-[#6E6E73] cursor-pointer py-3 rounded-xl text-sm font-medium transition-colors"
+          className="flex-1 border border-[#E8E8ED] hover:border-red-400 hover:text-red-500 text-[#6E6E73] cursor-pointer py-3 rounded-xl text-sm md:text-base font-medium transition-colors"
         >
           Vaciar carrito
         </button>
+
         <button
           onClick={handleCheckout}
-          className="flex-1 bg-[#0071E3] hover:bg-[#0077ED] text-white cursor-pointer py-3 rounded-xl text-lg font-medium transition-colors"
+          className="flex-1 bg-[#0071E3] hover:bg-[#0077ED] text-white cursor-pointer py-3 rounded-xl text-base md:text-lg font-medium transition-colors"
         >
           Finalizar compra
         </button>

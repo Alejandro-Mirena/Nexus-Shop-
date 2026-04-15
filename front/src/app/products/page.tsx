@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { fetchProducts } from "@/helpers/fetchProducts";
 import Card from "@/components/Card";
 import { IProduct } from "@/Types";
+import Categories from "@/components/Categories";
 
 const ProductsPage = () => {
   const searchParams = useSearchParams();
@@ -25,10 +26,23 @@ const ProductsPage = () => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-8">
-      {products.map((product) => (
-        <Card key={product.id} {...product} />
-      ))}
+    <div className="px-4 sm:px-6 md:px-8 py-6">
+      <Categories />
+
+      <div
+        className="
+        grid 
+        grid-cols-1 
+        sm:grid-cols-2 
+        md:grid-cols-3 
+        lg:grid-cols-4 
+        gap-4 md:gap-6
+      "
+      >
+        {products.map((product) => (
+          <Card key={product.id} {...product} />
+        ))}
+      </div>
     </div>
   );
 };
