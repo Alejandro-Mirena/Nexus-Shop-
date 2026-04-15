@@ -43,9 +43,15 @@ const CartPage = () => {
     return (
       <div className="text-center py-20">
         <h1 className="text-2xl font-semibold mb-4">
-          Tu carrito está vacío 🛒
+          Tu carrito está vacío 😓
         </h1>
-        <Link href="/products" className="text-[#0071E3] hover:underline">
+        <p className="text-sm text-[#6E6E73] mb-6">
+          Agrega productos para verlos aquí.
+        </p>
+        <Link
+          href="/products"
+          className="bg-[#0071E3] hover:bg-[#0077ed] transition-colors text-white px-3 py-2 rounded-lg text-xs md:text-sm font-medium"
+        >
           Ir a comprar
         </Link>
       </div>

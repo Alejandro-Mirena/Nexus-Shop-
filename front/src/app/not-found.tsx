@@ -3,7 +3,6 @@ import Link from "next/link";
 const NotFound = () => {
   return (
     <div className="min-h-screen bg-[#F5F5F7] flex flex-col items-center justify-center px-4 text-center">
-      {/* Número 404 grande */}
       <h1 className="text-[120px] md:text-[180px] font-semibold text-[#E8E8ED] leading-none select-none">
         404
       </h1>

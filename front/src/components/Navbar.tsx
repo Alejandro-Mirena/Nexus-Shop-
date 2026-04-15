@@ -90,7 +90,6 @@ const Navbar = () => {
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
-
             {/*  NUMERITO */}
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold">
@@ -104,8 +103,9 @@ const Navbar = () => {
             <div className="flex items-center gap-4  md:gap-3">
               <Link
                 href="/dashboard"
-                className="text-[#1D1D1F] text-sm font-semibold hover:opacity-80 transition-opacity hidden md:block"
+                className="text-[#1D1D1F]  hover:text-[#0071E3] text-sm font-semibold hover:opacity-80 transition-opacity hidden md:block"
               >
+                {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
