@@ -5,13 +5,20 @@ import { ProductRepository } from "../repositories/product.repository";
 import { UserRepository } from "../repositories/user.repository";
 
 export const createOrderService = async (
-  createOrderDto: CreateOrderDto
+  createOrderDto: CreateOrderDto,
 ): Promise<Order> => {
   const productsF = [];
 
-  for await (const id of createOrderDto.products) {
-    const product = await ProductRepository.findOneBy({ id });
+  let total = 0;
+
+  for await (const item of createOrderDto.products) {
+    const product = await ProductRepository.findOneBy({ id: item.id });
+
     if (!product) throw new Error("Product not found");
+
+    // 🔥 calcular total real desde DB
+    total += product.price * item.quantity;
+
     productsF.push(product);
   }
 
@@ -24,6 +31,7 @@ export const createOrderService = async (
   newOrder.date = new Date();
   newOrder.user = userF;
   newOrder.products = productsF;
+  newOrder.total = total;
 
   await OrderRepository.save(newOrder);
   return newOrder;

@@ -26,6 +26,9 @@ export class Order {
   @Column()
   date: Date;
 
+  @Column({ type: "float", default: 0 })
+  total: number;
+
   @ManyToOne(() => User, (user) => user.orders)
   @JoinColumn({ name: "userId" })
   user: User;
