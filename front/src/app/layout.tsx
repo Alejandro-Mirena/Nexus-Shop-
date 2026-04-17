@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <ScrollToTop />
+          <Toaster position="top-right" />
           <Footer />
         </CartProvider>
       </body>

@@ -1,6 +1,9 @@
+"use client";
+
 import { useFormik } from "formik";
 import { registerSchema } from "@/helpers/validations";
 import { fetchRegister } from "@/helpers/fetchRegister";
+import toast from "react-hot-toast";
 
 interface Props {
   onError: (msg: string) => void;
@@ -19,21 +22,32 @@ const RegisterForm = ({ onError, onSuccess, onSwitchToLogin }: Props) => {
       phone: "",
     },
     validationSchema: registerSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       onError("");
-      const data = await fetchRegister({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-        address: values.address,
-        phone: values.phone,
-      });
-      if (data.id) {
-        onSuccess("Cuenta creada exitosamente. Iniciá sesión.");
-        onSwitchToLogin();
-        formik.resetForm();
-      } else {
-        onError(data.message || "Error al registrarse");
+
+      try {
+        const data = await fetchRegister({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          address: values.address,
+          phone: values.phone,
+        });
+
+        if (data.id) {
+          toast.success("Cuenta creada correctamente 🎉");
+
+          onSuccess("Cuenta creada exitosamente. Iniciá sesión.");
+          onSwitchToLogin();
+          resetForm();
+        } else {
+          toast.error(data.message || "Error al registrarse ❌");
+          onError(data.message || "Error al registrarse");
+        }
+      } catch (error) {
+        toast.error("Error del servidor 🚨");
+      } finally {
+        setSubmitting(false);
       }
     },
   });

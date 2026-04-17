@@ -1,7 +1,10 @@
+"use client";
+
 import { useFormik } from "formik";
 import { loginSchema } from "@/helpers/validations";
 import { fetchLogin } from "@/helpers/fetchLogin";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface Props {
   onError: (msg: string) => void;
@@ -13,16 +16,27 @@ const LoginForm = ({ onError }: Props) => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: loginSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { setSubmitting }) => {
       onError("");
-      const data = await fetchLogin(values.email, values.password);
-      if (data.login) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        window.dispatchEvent(new Event("authChange"));
-        router.push("/");
-      } else {
-        onError("Email o contraseña incorrectos");
+
+      try {
+        const data = await fetchLogin(values.email, values.password);
+
+        if (data.login) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          window.dispatchEvent(new Event("authChange"));
+
+          toast.success("Sesión iniciada correctamente ");
+          router.push("/");
+        } else {
+          toast.error("Email o contraseña incorrectos ");
+          onError("Email o contraseña incorrectos");
+        }
+      } catch (error) {
+        toast.error("Error al iniciar sesión ");
+      } finally {
+        setSubmitting(false);
       }
     },
   });
