@@ -16,7 +16,7 @@ const ScrollToTop = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className=" bg-[#0071E3] fixed bottom-10 right-6 w-10 h-10 rounded-full cursor-pointer text-white flex items-center justify-center shadow-md hover:opacity-80 transition-opacity z-50"
+      className="bg-[#1D1D1F] fixed bottom-10 right-6 w-10 h-10 rounded-full cursor-pointer text-white flex items-center justify-center shadow-md hover:opacity-80 transition-opacity z-50"
     >
       <svg
         width="20"
