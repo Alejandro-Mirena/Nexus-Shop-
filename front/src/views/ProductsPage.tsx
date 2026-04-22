@@ -67,13 +67,13 @@ const ProductsView = () => {
       </p>
 
       {/*  CATEGORÍAS */}
-      <div className="flex gap-3 overflow-x-auto mb-8 pb-2">
+      <div className="flex gap-3 overflow-x-auto mb-8 justify-center pb-2">
         <button
           onClick={() => handleFilter(null)}
           className={`px-4 py-2 rounded-full text-sm border transition ${
             !categoryId
               ? "bg-[#0071E3] text-white"
-              : "text-[#6E6E73] border-[#0b0b0c]"
+              : "text-[#6E6E73] border-[#0b0b0c] cursor-pointer hover:border-[#0071E3]"
           }`}
         >
           Todos
@@ -86,7 +86,7 @@ const ProductsView = () => {
             className={`px-4 py-2 rounded-full text-sm border transition ${
               categoryId === String(cat.id)
                 ? "bg-[#0071E3] text-white"
-                : "text-[#6E6E73] border-[#E8E8ED] hover:border-[#0071E3]"
+                : "text-[#6E6E73] border-[#E8E8ED] cursor-pointer hover:border-[#0071E3]"
             }`}
           >
             {cat.name}

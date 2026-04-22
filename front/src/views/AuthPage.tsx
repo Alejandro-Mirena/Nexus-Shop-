@@ -16,7 +16,7 @@ const AuthPage = () => {
             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
               isLogin
                 ? "bg-[#0071E3] text-white"
-                : "text-[#6E6E73] hover:text-[#1D1D1F]"
+                : "text-[#6E6E73] hover:text-[#1D1D1F] cursor-pointer"
             }`}
           >
             Iniciar sesión
@@ -26,7 +26,7 @@ const AuthPage = () => {
             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
               !isLogin
                 ? "bg-[#0071E3] text-white"
-                : "text-[#6E6E73] hover:text-[#1D1D1F]"
+                : "text-[#6E6E73] hover:text-[#1D1D1F] cursor-pointer"
             }`}
           >
             Crear cuenta

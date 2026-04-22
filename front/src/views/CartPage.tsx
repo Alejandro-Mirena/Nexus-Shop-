@@ -26,7 +26,7 @@ const CartPage = () => {
     return (
       <div className="text-center py-20">
         <h1 className="text-[#1D1D1F] text-2xl font-semibold mb-4">
-          Tu carrito está vacío
+          Tu carrito está vacío 😓
         </h1>
         <p className="text-[#6E6E73] text-sm mb-6">
           Debes iniciar sesión para comprar.
@@ -167,7 +167,7 @@ const CartPage = () => {
         <button
           onClick={clearCart}
           disabled={loading}
-          className="flex-1 border border-[#E8E8ED] hover:border-red-400 hover:text-red-500 text-[#6E6E73] py-3 rounded-xl text-sm md:text-base font-medium transition-colors disabled:opacity-50"
+          className="flex-1 border border-[#E8E8ED] cursor-pointer hover:border-red-400 hover:text-red-500 text-[#6E6E73] py-3 rounded-xl text-sm md:text-base font-medium transition-colors disabled:opacity-50"
         >
           Vaciar carrito
         </button>
@@ -175,7 +175,7 @@ const CartPage = () => {
         <button
           onClick={handleCheckout}
           disabled={loading}
-          className="flex-1 bg-[#0071E3] hover:bg-[#0077ED] text-white py-3 rounded-xl text-base md:text-lg font-medium transition-colors disabled:opacity-50"
+          className="flex-1 bg-[#0071E3] hover:bg-[#0077ED] cursor-pointer text-white py-3 rounded-xl text-base md:text-lg font-medium transition-colors disabled:opacity-50"
         >
           {loading ? "Procesando..." : "Finalizar compra"}
         </button>

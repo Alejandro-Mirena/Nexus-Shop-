@@ -105,6 +105,13 @@ const ProductDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
 
           <p className="text-sm text-gray-500 mb-6">{product.description}</p>
 
+          <p className="text-sm text-[#6E6E73] mb-4">
+            Stock disponible:{" "}
+            <span className="text-[#34C759] font-medium">
+              {product.stock} unidades
+            </span>
+          </p>
+
           <div className="flex items-center gap-4 mb-6">
             <span className="text-sm">Cantidad:</span>
 

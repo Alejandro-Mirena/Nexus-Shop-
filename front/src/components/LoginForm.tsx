@@ -94,7 +94,7 @@ const LoginForm = ({ onError }: Props) => {
       <button
         type="submit"
         disabled={formik.isSubmitting}
-        className="w-full bg-[#0071E3] hover:bg-[#0077ED] disabled:opacity-60 transition-colors text-white py-3 rounded-lg text-sm font-medium mt-2"
+        className="w-full bg-[#0071E3] hover:bg-[#0077ED] cursor-pointer disabled:opacity-60 transition-colors text-white py-3 rounded-lg text-sm font-medium mt-2"
       >
         {formik.isSubmitting ? "Ingresando..." : "Ingresar"}
       </button>

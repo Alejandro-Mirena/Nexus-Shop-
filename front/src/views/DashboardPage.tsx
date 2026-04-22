@@ -91,14 +91,14 @@ const Dashboard = () => {
           </p>
         ) : (
           <div className="flex flex-col gap-4">
-            {orders.map((order: any) => (
+            {orders.map((order: any, index: number) => (
               <div
                 key={order.id}
                 className="bg-white border border-[#E8E8ED] rounded-xl p-4 md:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 hover:shadow-md transition-shadow"
               >
                 <div>
                   <p className="font-semibold text-[#1D1D1F] text-sm md:text-base">
-                    Compra #{order.id}
+                    Compra #{index + 1}
                   </p>
                   <p className="text-xs md:text-sm text-[#6E6E73]">
                     Fecha: {order.date}
