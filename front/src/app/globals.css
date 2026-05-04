@@ -21,3 +21,9 @@
   --warning: #ff9f0a;
   --special: #5e5ce6;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}

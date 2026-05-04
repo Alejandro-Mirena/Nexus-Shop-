@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import WhyUs from "@/components/WhyUs";
 import Categories from "@/components/Categories";
+import ReviewsCarrusel from "@/components/ReviewsCarrusel";
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Categories variant="hero" />
 
       <WhyUs />
+      <ReviewsCarrusel />
     </div>
   );
 };
