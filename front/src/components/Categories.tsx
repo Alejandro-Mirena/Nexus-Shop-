@@ -49,7 +49,7 @@ const Categories = ({ variant = "products" }: Props) => {
     <div className="mb-10 px-4 md:px-8">
       {variant === "hero" && (
         <>
-          <h2 className="text-2xl md:text-4xl font-semibold text-center mb-4 tracking-tight">
+          <h2 className="text-2xl p-2 md:text-4xl font-semibold text-center  tracking-tight">
             Explora nuestras categorías
           </h2>
 
@@ -78,8 +78,7 @@ const Categories = ({ variant = "products" }: Props) => {
                     src={categoryImages[cat.name]}
                     alt={cat.name}
                     fill
-                    className="object-cover"
-                    unoptimized
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
 
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />

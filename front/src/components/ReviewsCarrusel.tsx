@@ -109,7 +109,7 @@ const ReviewCarousel = () => {
   return (
     <section className="py-10 md:py-14">
       <h2 className="text-xl md:text-3xl font-semibold text-center mb-8 md:mb-10">
-        Lo que dicen nuestros clientes
+        Opiniones de Nuestros Clientes
       </h2>
 
       <div className="relative">
