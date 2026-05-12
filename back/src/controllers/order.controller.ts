@@ -7,9 +7,16 @@ import { AppDataSource } from "../config/dataSource";
 export const createOrder = catchedController(
   async (req: Request, res: Response) => {
     const { products } = req.body;
-    const userId = req.body.userId;
+    const userId = (req as any).user.id;
     const newOrder = await createOrderService({ userId, products });
-    res.send(newOrder);
+    res
+      .status(201)
+      .json({
+        id: newOrder.id,
+        status: newOrder.status,
+        date: newOrder.date,
+        total: newOrder.total,
+      });
   },
 );
 export const getOrders = async (req: any, res: any) => {
@@ -24,7 +31,7 @@ export const getOrders = async (req: any, res: any) => {
           id: userId,
         },
       },
-      relations: ["user", "products"],
+      relations: ["orderDetails", "orderDetails.product"],
     });
 
     res.json(orders);

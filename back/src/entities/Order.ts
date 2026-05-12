@@ -2,21 +2,17 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { User } from "./User";
-import { Product } from "./Product";
+import { OrderDetail } from "./OrderDetail";
 
 // status: pending, approved, rejected
 
 @Entity({ name: "orders" })
 export class Order {
-  static find(arg0: { where: { user: { id: any } } }) {
-    throw new Error("Method not implemented.");
-  }
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -33,7 +29,6 @@ export class Order {
   @JoinColumn({ name: "userId" })
   user: User;
 
-  @ManyToMany(() => Product)
-  @JoinTable()
-  products: Product[];
+  @OneToMany(() => OrderDetail, (detail) => detail.order, { cascade: true })
+  orderDetails: OrderDetail[];
 }
