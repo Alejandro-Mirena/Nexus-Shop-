@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Hero from "@/components/Hero";
 import WhyUs from "@/components/WhyUs";
 import Categories from "@/components/Categories";
@@ -8,7 +9,9 @@ const HomePage = () => {
     <div>
       <Hero />
 
-      <Categories variant="hero" />
+      <Suspense fallback={<div className="h-64" />}>
+        <Categories variant="hero" />
+      </Suspense>
 
       <WhyUs />
       <ReviewsCarrusel />
