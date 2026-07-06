@@ -1,3 +1,7 @@
 {
-  "rootDirectory": "front"
+  "rootDirectory": "front",
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "framework": "nextjs"
 }
